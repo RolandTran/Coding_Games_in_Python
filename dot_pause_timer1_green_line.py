@@ -34,7 +34,7 @@ def draw():
 
     # Draw lines between connected dots
     for line in lines:
-        screen.draw.line(line[0], line[1], (100, 0, 0))  # Draw a red line between two points
+        screen.draw.line(line[0], line[1], (0, 250, 0))  # Draw a green line between two points
 
     # Display remaining time
     screen.draw.text(f"Time Left: {remaining_time} s", topleft=(10, 10), color="white")
@@ -87,7 +87,7 @@ def on_mouse_down(pos):
         # Check if all dots are connected
         if next_dot == len(dots):
             game_over = True # Set game over flag to True
-            game_reason = "Game Over! All dots connected!"  # Set the correct game-over message
+            game_reason = "You won! All dots connected!"  # Set the correct game-over message
             print(game_reason)
             clock.schedule_unique(close_game, 5.0)  # Schedule closing the game after 5 seconds
     else:
