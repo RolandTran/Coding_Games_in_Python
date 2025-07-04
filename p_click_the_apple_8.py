@@ -114,7 +114,6 @@ def update_timer():
         if remaining_time <= 0:
             game_over = True
             input_active = True
-            print(f"Time's up! Your final score was {score}.")
             pygame.mixer.music.fadeout(1000)
         else:
             clock.schedule_unique(update_timer, 1.0)
