@@ -1,0 +1,199 @@
+0 = original
+0a = white background
+0b = only clicked fruit is moved
+0c = long version
+1= keeping score display top right
+1a = condense version
+2a = add timer 60s display top left, game close in 3s after over, pause spacebar, rules' display, no game play when paused 
+2b = condense version
+2c = extra compact
+3 = add sound effects and music; game over
+3a = condense
+4 = add in movement
+4a = condense
+5 = add in rotation
+5a = condense
+6 = add in speed after every collision, display difficulty
+6a = condense
+7 = when coins collide
+8f = add in top3 scores w/ initials saved in .txt file = add in saved date/time, 
+9 = compact and call it final game
+
+
+# explanation of code f_click_the_coins.py
+
+IMPORT STATEMENT
+import pygame, pgzrun, string
+from random import randint, choice
+from datetime import datetime
+'''
+pygame: Accesses mixer (for music/sounds).
+pgzrun: Needed to launch the Pygame Zero game with pgzrun.go().
+string: Provides constants like string.ascii_uppercase for initials input.
+randint, choice: Used for random positions and directions.
+datetime: Used to save the date with high scores.
+'''
+
+GAME STATE VARIABLES
+score, time_left, paused, game_over, space_pressed = 0, 60, False, False, False
+WIDTH, HEIGHT = 800, 800
+'''
+itializes the game state:
+score: current points.
+time_left: countdown timer in seconds.
+paused: pause toggle.
+game_over: game end state.
+space_pressed: avoids multiple toggles from holding the spacebar.
+WIDTH, HEIGHT: game window dimensions.
+'''
+
+
+BACKGROUND MUSIC SETUP
+pygame.mixer.init()
+pygame.mixer.music.load("music/jamesbondtheme.wav")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
+'''
+Initializes the mixer and loads background music.
+-1: loops forever.
+'''
+
+
+COIN SETUP
+coin_data = [
+    ("coin", 1.00, 20), ...
+]
+
+coins = {}
+for name, value, margin in coin_data:
+'''
+coin_data: each tuple is a coin type, its value, and margin for placement.
+coins: dictionary holding coin name as keys, and dicts with:
+actor: the Pygame Zero sprite (e.g., Actor("penny")).
+value: how much it's worth.
+margin: how far it must stay from edges.
+dx, dy: movement speed (random direction).
+angle: for spinning visual effect.
+'''
+
+
+INPUT / HIGH SCORE UI STATE
+initials = ""
+input_active = False
+MAX_INITIALS = 3
+score_saved = False
+Top3_File = "top3scores_click_the_coins.txt"
+# Used to collect and save player initials after game ends.
+
+
+HIGH SCORE FUNCTIONS
+def load_top3(): ...
+def save_top3(top3): ...
+def add_to_top3(name, val): ...
+'''
+
+
+UTILITY FUNCTIONS
+def place(actor, margin=20): ...
+def speed_up(actor, max_speed=10): ...
+'''
+place: puts a coin within screen bounds.
+speed_up: increases a coin's speed (limits to max_speed).
+'''
+
+SCREEN RENDERING
+def draw():
+'''
+Draws all visible elements:
+Background, coins, score, time.
+Rules if paused.
+Final score, initials input, and top 3 if game over.
+'''
+
+CLOSE_GAME
+def close_game()
+# quits the game 5 s after ending
+
+
+COUNTDOWN LOGIC
+def update_timer():
+'''
+Moves each coin.
+Bounces them off screen edges.
+Rotates them slightly for visual effect.
+'''
+
+
+RUNS EVERY FRAME
+def update():
+'''
+Detects spacebar for pause.
+Pauses/resumes music and timer.
+Moves coins if game is running.
+Handles collisions between coins:
+If two coins collide, they’re repositioned randomly.
+'''
+
+
+CLICK HANDLING
+def on_mouse_down(pos): 
+'''
+Called when player clicks:
+If they click a coin:
+Play a hit sound (e.g., hitpenny.wav).
+Add to score, speed up coin, and reposition it.
+If they miss:
+Play miss sound, end game, start countdown to quit.
+'''
+
+
+INITIALS INPUT
+def on_key_down(key):
+'''
+Lets player enter initials at game over.
+Handles:
+A–Z letters
+Backspace to erase
+Enter to save score if 3-letter initials are entered
+'''
+
+
+FINAL SETUP BEFORE GAME STARTS
+for coin in coins.values():
+    place(coin["actor"], coin.get("margin", 20))
+clock.schedule_unique(update_timer, 1.0)
+pgzrun.go()
+'''
+for coin in coins.values(): place(...)
+Repositions all coins to screen-safe spots before game starts.
+Ensures no overlap with edges based on margin.
+
+clock.schedule_unique(update_timer, 1.0)
+Starts the game timer 1 second after launch.
+Without this, update_timer() won’t begin counting down.
+
+pgzrun.go()
+Starts the Pygame Zero game loop.
+From here:
+draw() runs every frame.
+update() runs every frame.
+Input functions like on_mouse_down() start reacting.
+Sounds, music, and animations begin.
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
