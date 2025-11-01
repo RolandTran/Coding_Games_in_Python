@@ -1,0 +1,20 @@
+0 = original
+0a = white background
+0b = only clicked fruit is moved
+0c = long version
+1= keeping score display top right
+1a = condense version
+2a = add timer 60s display top left, game close in 3s after over, pause spacebar, rules' display, no game play when paused 
+2b = condense version
+2c = extra compact
+3 = add sound effects and music; game over
+3a = condense
+4 = add in movement
+4a = condense
+5 = add in rotation
+5a = condense
+6 = add in speed after every collision, display difficulty
+6a = condense
+7 = when coins collide
+8f = add in top3 scores w/ initials saved in .txt file = add in saved date/time, 
+9 = compact and call it final game
