@@ -1,0 +1,22 @@
+ = prototype
+e = error
+
+
+0 = original with timer display of one player vs clicker, score display
+0a = abridged version
+1 = close in 3s after over, pause spacebar, rules' display, no game play when paused, move fox upon click
+1a = abridged version of 1 
+2 = screen boundaries for fox and coins, flash effects when coin are collected or clicked and restart button when game over
+2a = version 2 compact
+3 = upon manually close same as game over
+3a = compact version of 3
+4 = add in sound effects and music,
+4a = condense of 4
+5 = movement, rotation, and coin collision
+5a = condense
+6 = add in speed after every collision
+6a = condense
+7 = save top3 scores
+
+8f = add in top3 scores w/ initials saved in .txt file = add in saved date/time, 
+9 = compact and call it final game
